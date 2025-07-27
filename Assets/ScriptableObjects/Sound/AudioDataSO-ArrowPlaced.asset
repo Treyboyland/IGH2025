@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ffc0a220a117e478d4515694e356e6, type: 3}
+  m_Name: AudioDataSO-ArrowPlaced
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: a8a1b3e1ed78d944a8656714fe272535, type: 3}
+  volumeRange: {x: 0.3, y: 0.4}
+  pitchRange: {x: 0.8, y: 1.2}

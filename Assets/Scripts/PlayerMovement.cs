@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
     MovementDirectionSO currentDirection;
 
     [SerializeField]
+    GameEvent onPlayerMoved;
+
+    [SerializeField]
     Player player;
 
     [SerializeField]
@@ -64,7 +67,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dir != none)
         {
+            var prev = player.MapPosition;
             player.Move(dir);
+            if (prev != player.MapPosition)
+            {
+                onPlayerMoved.Invoke();
+            }
         }
     }
 }

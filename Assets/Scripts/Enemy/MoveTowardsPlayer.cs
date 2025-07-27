@@ -6,6 +6,9 @@ public class EnemyMoveTowardsPlayer : MonoBehaviour
     MappedObject objToMove;
 
     [SerializeField]
+    GameEvent onMoved;
+
+    [SerializeField]
     float secondsBetweenMoves;
 
     [SerializeField]
@@ -32,6 +35,7 @@ public class EnemyMoveTowardsPlayer : MonoBehaviour
 
     void Move()
     {
+        player = player == null ? FindAnyObjectByType<Player>() : player;
         var diff = player.MapPosition - objToMove.MapPosition;
         MovementDirectionSO dir = none;
         if (diff == Vector2Int.zero)
@@ -46,7 +50,13 @@ public class EnemyMoveTowardsPlayer : MonoBehaviour
         {
             dir = diff.y < 0 ? down : up;
         }
-
+        //Debug.LogWarning($"Move: {dir.DirectionName}");
+        var prev = objToMove.MapPosition;
         objToMove.Move(dir);
+
+        if (prev != objToMove.MapPosition)
+        {
+            onMoved.Invoke();
+        }
     }
 }

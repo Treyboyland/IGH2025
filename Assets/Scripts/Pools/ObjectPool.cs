@@ -9,6 +9,8 @@ public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 
     protected List<T> pool = new List<T>();
 
+    public List<T> Pool { get => pool; }
+
     T CreateObject()
     {
         var newPrefab = Instantiate(prefab, transform);

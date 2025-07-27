@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Map Nodes
+    uniqueID: 881545951
+    locked: 0
+  - name: Arrows
+    uniqueID: 3336240089
+    locked: 0
+  - name: Ship
+    uniqueID: 2377409363
+    locked: 0
+  - name: Goal
+    uniqueID: 3576355105
+    locked: 0
+  - name: Player
+    uniqueID: 843519153
+    locked: 0
+  - name: Enemy
+    uniqueID: 3897491083
+    locked: 0
+  m_RenderingLayers:
+  - Default

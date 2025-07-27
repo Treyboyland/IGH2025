@@ -7,6 +7,9 @@ public class MoveRandom : MonoBehaviour
     MappedObject objToMove;
 
     [SerializeField]
+    GameEvent onMoved;
+
+    [SerializeField]
     float secondsBetweenMoves;
 
     [SerializeField]
@@ -41,6 +44,12 @@ public class MoveRandom : MonoBehaviour
     void Move()
     {
         var dir = potentialMoves.GetRandomItem();
+        var prev = objToMove.MapPosition;
         objToMove.Move(dir);
+
+        if (prev != objToMove.MapPosition)
+        {
+            onMoved.Invoke();
+        }
     }
 }

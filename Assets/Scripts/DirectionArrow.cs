@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DirectionArrow : MonoBehaviour
+public class DirectionArrow : MappedObject
 {
     [SerializeField]
     MovementDirectionSO directionData;

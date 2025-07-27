@@ -13,6 +13,8 @@ public class MapGrid : MonoBehaviour
     [SerializeField]
     ObjectPool<MapNode> pool;
 
+    public Vector2Int Dimensions { get => dimensions; }
+
     void Awake()
     {
         GenerateNodes();

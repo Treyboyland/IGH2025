@@ -18,6 +18,12 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     GameEvent onScreenshot;
 
+    [SerializeField]
+    GameEvent onNext;
+
+    [SerializeField]
+    GameEvent onPrevious;
+
     public void HandleMoveAction(InputAction.CallbackContext context)
     {
         var dir = context.ReadValue<Vector2>();
@@ -41,21 +47,49 @@ public class PlayerControl : MonoBehaviour
 
     public void HandleQuitAction(InputAction.CallbackContext context)
     {
-        onQuit.Invoke();
+        if (context.ReadValueAsButton() && context.started)
+        {
+            onQuit.Invoke();
+        }
     }
 
     public void HandleScreenshotAction(InputAction.CallbackContext context)
     {
-        onScreenshot.Invoke();
+        if (context.ReadValueAsButton() && context.started)
+        {
+            onScreenshot.Invoke();
+        }
     }
 
     public void HandleResetAction(InputAction.CallbackContext context)
     {
-        onReset.Invoke();
+        if (context.ReadValueAsButton() && context.started)
+        {
+            onReset.Invoke();
+        }
     }
 
     public void HandleSelectAction(InputAction.CallbackContext context)
     {
-        onSelect.Invoke();
+        if (context.ReadValueAsButton() && context.started)
+        {
+            onSelect.Invoke();
+        }
+    }
+
+    public void HandleNextAction(InputAction.CallbackContext context)
+    {
+        if (context.ReadValueAsButton() && context.started)
+        {
+            onNext.Invoke();
+        }
+    }
+
+    public void HandlePreviousAction(InputAction.CallbackContext context)
+    {
+        if (context.ReadValueAsButton() && context.started)
+        {
+            onPrevious.Invoke();
+        }
     }
 }
