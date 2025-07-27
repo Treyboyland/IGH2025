@@ -1,0 +1,50 @@
+using UnityEngine;
+
+public class MappedObject : MonoBehaviour
+{
+    static MapGrid grid;
+
+    [SerializeField]
+    Vector2Int mapPosition;
+
+    public Vector2Int MapPosition
+    {
+        get
+        {
+            return mapPosition;
+        }
+        set
+        {
+            mapPosition = value;
+            UpdatePosition();
+        }
+    }
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    private void Awake()
+    {
+        grid = FindAnyObjectByType<MapGrid>();
+    }
+
+    void Start()
+    {
+        UpdatePosition();
+    }
+
+    void UpdatePosition()
+    {
+        grid = grid == null ? FindAnyObjectByType<MapGrid>() : grid;
+        grid.SetTransformToPosition(transform, mapPosition);
+    }
+
+    public virtual void Move(MovementDirectionSO movementDirection)
+    {
+        var newPos = mapPosition + movementDirection.Direction;
+        if (grid.HasNodeAtPosition(newPos))
+        {
+            MapPosition = newPos;
+        }
+    }
+}

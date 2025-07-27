@@ -1,0 +1,52 @@
+using UnityEngine;
+
+public class EnemyMoveTowardsPlayer : MonoBehaviour
+{
+    [SerializeField]
+    MappedObject objToMove;
+
+    [SerializeField]
+    float secondsBetweenMoves;
+
+    [SerializeField]
+    MovementDirectionSO up, down, left, right, none;
+
+    static Player player;
+
+    float elapsed = 0;
+
+    void OnEnable()
+    {
+        elapsed = 0;
+    }
+
+    void Update()
+    {
+        elapsed += Time.deltaTime;
+        if (elapsed > secondsBetweenMoves)
+        {
+            elapsed = 0;
+            Move();
+        }
+    }
+
+    void Move()
+    {
+        var diff = player.MapPosition - objToMove.MapPosition;
+        MovementDirectionSO dir = none;
+        if (diff == Vector2Int.zero)
+        {
+            dir = none;
+        }
+        else if (diff.IsXGreater())
+        {
+            dir = diff.x < 0 ? left : right;
+        }
+        else
+        {
+            dir = diff.y < 0 ? down : up;
+        }
+
+        objToMove.Move(dir);
+    }
+}
