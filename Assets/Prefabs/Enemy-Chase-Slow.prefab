@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objToMove: {fileID: 3353562826171123620}
+  onMoved: {fileID: 11400000, guid: a349769e1e1d0724d9b9dadd4d101e0d, type: 2}
   secondsBetweenMoves: 1
   up: {fileID: 11400000, guid: 5cb84b1dc507f28439af038c576a5ab0, type: 2}
   down: {fileID: 11400000, guid: b091e2630b8a875449eec29fc40720e5, type: 2}

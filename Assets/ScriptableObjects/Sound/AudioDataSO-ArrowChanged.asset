@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4ffc0a220a117e478d4515694e356e6, type: 3}
-  m_Name: AudioDataSO-ArrowPlaced
+  m_Name: AudioDataSO-ArrowChanged
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: a8a1b3e1ed78d944a8656714fe272535, type: 3}
-  volumeRange: {x: 0.3, y: 0.3}
-  pitchRange: {x: 1, y: 1}
+  - {fileID: 8300000, guid: 1b7d489663d408d4b9c43a17a48bea55, type: 3}
+  volumeRange: {x: 0.1, y: 0.2}
+  pitchRange: {x: 0.8, y: 1.2}
