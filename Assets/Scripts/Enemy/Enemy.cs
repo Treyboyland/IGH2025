@@ -9,5 +9,12 @@ public class Enemy : MappedObject
         {
             player.Die();
         }
+        
+        var directionArrow = collision.gameObject.GetComponent<DirectionArrow>();
+
+         if(directionArrow)
+         {
+              directionArrow.gameObject.SetActive(false);
+         } 
     }
 }
