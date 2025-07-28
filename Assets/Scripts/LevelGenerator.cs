@@ -24,8 +24,13 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private ObjectPool<GoalNode> goalPool;
 
+    [SerializeField]
+    ObjectPool<MappedObject> obstaclePool;
+
     int numShips;
     int shipsReachedGoal;
+
+List<Vector2Int> takenPositions = new List<Vector2Int>();
 
     public void IncrementLevel()
     {
@@ -82,25 +87,36 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int i = 0; i < numToSpawn; i++)
         {
+            Vector2Int pos;
+do
+{
+ 
             //Left side spawn
             int x = Random.Range(-Mathf.Abs(map.Dimensions.x), -Mathf.Abs(map.Dimensions.x) + 3);
             int y = Random.Range(-Mathf.Abs(map.Dimensions.y), Mathf.Abs(map.Dimensions.y) + 1);
-
+pos = new Vector2Int(x,y);
+}while(takenPositions.Contains(pos))
+takenPositions.Add(pos);
             var ship = shipPool.GetObject();
-            ship.MapPosition = new Vector2Int(x, y);
+            ship.MapPosition = pos;
             ship.gameObject.SetActive(true);
         }
     }
 
     private void SpawnGoal()
     {
-
+Vector2Int pos;
+do
+{
         //Right side spawn
         int x = Random.Range(Mathf.Abs(map.Dimensions.x) - 2, Mathf.Abs(map.Dimensions.x) + 1);
         int y = Random.Range(-Mathf.Abs(map.Dimensions.y), Mathf.Abs(map.Dimensions.y) + 1);
+pos = new Vector2Int(x,y);
+}while(takenPositions.Contains(pos))
+takenPositions.Add(pos);
 
         var goal = goalPool.GetObject();
-        goal.MapPosition = new Vector2Int(x, y);
+        goal.MapPosition = pos;
         goal.gameObject.SetActive(true);
 
     }
@@ -113,14 +129,21 @@ public class LevelGenerator : MonoBehaviour
         }
         for (int i = 0; i < numToSpawn; i++)
         {
+Vector2Int pos;
+do
+{
             bool posX = HelperFunctions.IsHeads();
             bool posY = HelperFunctions.IsHeads();
             //So enemies cannot spawn kill player..hopefully;
             int x = posX ? Random.Range(2, Mathf.Abs(map.Dimensions.x) + 1) : Random.Range(-Mathf.Abs(map.Dimensions.x), -1);
             int y = posY ? Random.Range(2, Mathf.Abs(map.Dimensions.y) + 1) : Random.Range(-Mathf.Abs(map.Dimensions.y), -1);
+pos = new Vector2Int(x,y);
+}while(takenPositions.Contains(pos))
+takenPositions.Add(pos);
+
 
             var enemy = poolToUse.GetObject();
-            enemy.MapPosition = new Vector2Int(x, y);
+            enemy.MapPosition = pos;
             enemy.gameObject.SetActive(true);
         }
     }
@@ -131,6 +154,8 @@ public class LevelGenerator : MonoBehaviour
         slowEnemyPool.DisableAll();
         shipPool.DisableAll();
         goalPool.DisableAll();
+        obstaclePool.DisableAll();
+        takenPositions.Clear();
     }
 
 
