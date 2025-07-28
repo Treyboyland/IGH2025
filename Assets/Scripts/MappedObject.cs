@@ -7,6 +7,9 @@ public class MappedObject : MonoBehaviour
     [SerializeField]
     Vector2Int mapPosition;
 
+    [SerializeField]
+    bool isObstacle;
+
     public Vector2Int MapPosition
     {
         get
@@ -17,6 +20,14 @@ public class MappedObject : MonoBehaviour
         {
             mapPosition = value;
             UpdatePosition();
+        }
+    }
+
+    public bool IsObstacle
+    {
+        get
+        {
+            return isObstacle;
         }
     }
 
@@ -42,7 +53,7 @@ public class MappedObject : MonoBehaviour
     public virtual void Move(MovementDirectionSO movementDirection)
     {
         var newPos = mapPosition + movementDirection.Direction;
-        if (grid.HasNodeAtPosition(newPos))
+        if (grid.HasNodeAtPosition(newPos) && !grid.HasObstacleAtPosition(newPos))
         {
             MapPosition = newPos;
         }
