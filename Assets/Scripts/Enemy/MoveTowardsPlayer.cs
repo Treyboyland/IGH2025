@@ -45,10 +45,18 @@ public class EnemyMoveTowardsPlayer : MonoBehaviour
         else if (diff.IsXGreater())
         {
             dir = diff.x < 0 ? left : right;
+            if (!objToMove.CanMove(dir))
+            {
+                dir = diff.y < 0 ? down : up;
+            }
         }
         else
         {
             dir = diff.y < 0 ? down : up;
+            if (!objToMove.CanMove(dir))
+            {
+                dir = diff.x < 0 ? left : right;
+            }
         }
         //Debug.LogWarning($"Move: {dir.DirectionName}");
         var prev = objToMove.MapPosition;

@@ -50,6 +50,12 @@ public class MappedObject : MonoBehaviour
         grid.SetTransformToPosition(transform, mapPosition);
     }
 
+    public bool CanMove(MovementDirectionSO movementDirection)
+    {
+        var newPos = mapPosition + movementDirection.Direction;
+        return grid.HasNodeAtPosition(newPos) && !grid.HasObstacleAtPosition(newPos);
+    }
+
     public virtual void Move(MovementDirectionSO movementDirection)
     {
         var newPos = mapPosition + movementDirection.Direction;

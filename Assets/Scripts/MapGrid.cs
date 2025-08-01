@@ -57,6 +57,7 @@ public class MapGrid : MonoBehaviour
 
     public bool HasObstacleAtPosition(Vector2Int pos)
     {
-							 return GameObject.FindObjectsOfType<MappedObject>().Where(x=> x.gameObject.activeInHierarchy && x.MapPosition == pos && x.IsObstacle == true).Any();
+        return FindObjectsByType<MappedObject>(FindObjectsInactive.Exclude, FindObjectsSortMode.None)
+            .Where(x => x.MapPosition == pos && x.IsObstacle == true).Any();
     }
 }

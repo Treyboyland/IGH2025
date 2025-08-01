@@ -37,6 +37,11 @@ public class Player : MappedObject
         }
     }
 
+    public void Revive()
+    {
+        gameObject.SetActive(true);
+    }
+
     public void IncrementDirection()
     {
         //Debug.LogWarning("Incrementing Direction");

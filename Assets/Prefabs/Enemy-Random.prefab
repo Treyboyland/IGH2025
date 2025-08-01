@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapPosition: {x: 0, y: 0}
+  isObstacle: 1
 --- !u!114 &3751676481607395913
 MonoBehaviour:
   m_ObjectHideFlags: 0
